@@ -41,6 +41,13 @@ Builder.load_string("""
     GridLayout:
         cols: 1
         
+        Label:
+            font_size: 75
+            size_hint_y: None
+            height: 200
+            padding: 10, 10
+            text: "Menu"
+        
         Button:
             font_size: 75
             background_color: 0, 0 , 1 , 1
@@ -60,8 +67,6 @@ Builder.load_string("""
             on_release:
                 import webbrowser
                 webbrowser.open('https://kevinjunice.wixsite.com/ksquaredllc')
-
-
 """)
 
 #Tip calc
@@ -124,59 +129,38 @@ Builder.load_string("""
                         Split.text = ""
                         list_of_steps.clear_widgets()       
                                    
-            BoxLayout:
-                cols: 2
-                id: steps
+            TextInput:
+                id: Bill
+                text: Bill.text
+                hint_text: "Bill: $"
+                multiline: False
+                font_size: 125
                 size_hint_y: None
-                height: self.minimum_height 
-                padding: 5,5         
-                                                        
-                TextInput:
-                    id: Bill
-                    text: Bill.text
-                    hint_text: "Bill: $"
-                    multiline: False
-                    font_size: 125
-                    size_hint_y: None
-                    height: 200
-                    padding: 10
-                    input_filter: lambda text, from_undo: text[:6 - len(Bill.text)]           
-            
-            BoxLayout:
-                cols: 2
-                id: steps
-                size_hint_y: None
-                height: self.minimum_height 
-                padding: 5,5        
+                height: 200
+                padding: 10
+                input_filter: lambda text, from_undo: text[:6 - len(Bill.text)]           
         
-                TextInput:
-                    id: Percent
-                    text: Percent.text
-                    hint_text: "Percent: %"
-                    multiline: False
-                    font_size: 125
-                    size_hint_y: None
-                    height: 200
-                    padding: 10              
-                    input_filter: lambda text, from_undo: text[:2 - len(Percent.text)]         
-                    
-            BoxLayout:
-                cols: 2
-                id: steps
+            TextInput:
+                id: Percent
+                text: Percent.text
+                hint_text: "Percent: %"
+                multiline: False
+                font_size: 125
                 size_hint_y: None
-                height: self.minimum_height 
-                padding: 5,5        
-        
-                TextInput:
-                    id: Split
-                    text: Split.text
-                    hint_text: "Split:"
-                    multiline: False
-                    font_size: 125
-                    size_hint_y: None
-                    height: 200
-                    padding: 10              
-                    input_filter: lambda text, from_undo: text[:3 - len(Split.text)] 
+                height: 200
+                padding: 10              
+                input_filter: lambda text, from_undo: text[:2 - len(Percent.text)]         
+                
+            TextInput:
+                id: Split
+                text: Split.text
+                hint_text: "Split:"
+                multiline: False
+                font_size: 125
+                size_hint_y: None
+                height: 200
+                padding: 10              
+                input_filter: lambda text, from_undo: text[:3 - len(Split.text)] 
             
             Button:
                 id: steps
