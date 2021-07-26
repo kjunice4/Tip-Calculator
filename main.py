@@ -213,7 +213,7 @@ class Tip_Calculator(Screen):
     def set_previous_screen(self):
         if sm.current != "Homepage":
             sm.transition.direction = 'right'
-            sm.current = sm.previous()    
+            sm.current = "Menu"   
     layouts = []
     def steps(self,entry):
         layout = GridLayout(cols=1,size_hint_y= None)
