@@ -110,18 +110,6 @@ Builder.load_string("""
                         app.root.current = "Menu"
                         root.manager.transition.direction = "right" 
                         
-
-                Button:
-                    text: "Clear Entry"   
-                    font_size: 75
-                    size_hint_y: None
-                    height: 200
-                    padding: 10, 10
-                    on_release:
-                        Bill.text = ""
-                        Percent.text = ""
-                        Split.text = ""
-                        
                 Button:
                     id: steps
                     text: "Clear All"   
