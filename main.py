@@ -98,6 +98,18 @@ Builder.load_string("""
                 width:300
                 size_hint_y: None
                 height: self.minimum_height 
+                
+                Button:
+                    text: "Menu"   
+                    font_size: 75
+                    size_hint_y: None
+                    height: 200
+                    padding: 10, 10
+                    background_color: 0, 0 , 1 , 1
+                    on_release:
+                        app.root.current = "Menu"
+                        root.manager.transition.direction = "right" 
+                        
 
                 Button:
                     text: "Clear Entry"   
@@ -213,7 +225,7 @@ class Tip_Calculator(Screen):
     def set_previous_screen(self):
         if sm.current != "Homepage":
             sm.transition.direction = 'right'
-            sm.current = "Menu"   
+            sm.current = "Menu"
     layouts = []
     def steps(self,entry):
         layout = GridLayout(cols=1,size_hint_y= None)
