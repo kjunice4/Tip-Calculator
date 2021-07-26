@@ -17,7 +17,7 @@ Builder.load_string("""
         Button:
             background_normal: "KSquared_Logo.png"
             on_release:
-                app.root.current = "Tip_Calculator"
+                app.root.current = "Menu"
                 root.manager.transition.direction = "left" 
                 
         Button:
@@ -25,14 +25,46 @@ Builder.load_string("""
             background_color: 0, 0 , 0 , 1
             size_hint_y: None
             height: 200
-            text: "KSquared Exponents Solver"
+            text: "KSquared Tip Calculaor"
             on_release:
-                app.root.current = "Tip_Calculator"
+                app.root.current = "Menu"
                 root.manager.transition.direction = "left" 
 
 """)
 
-#EXPONENTS STEPS
+#Menu Page
+Builder.load_string("""
+<Menu>:
+    id: Menu
+    name: "Menu"
+    
+    GridLayout:
+        cols: 1
+        
+        Button:
+            font_size: 75
+            background_color: 0, 0 , 1 , 1
+            size_hint_y: None
+            height:400
+            text: "Tip Calculator"
+            on_release:
+                app.root.current = "Tip_Calculator"
+                root.manager.transition.direction = "left" 
+                
+        Button:
+            font_size: 75
+            background_color: 0, 1 , 0 , 1
+            size_hint_y: None
+            height: 400
+            text: "Visit KSquared LLC"
+            on_release:
+                import webbrowser
+                webbrowser.open('https://kevinjunice.wixsite.com/ksquaredllc')
+
+
+""")
+
+#Tip calc
 Builder.load_string("""
 <Tip_Calculator>
     id:Tip_Calculator
@@ -98,17 +130,11 @@ Builder.load_string("""
                 size_hint_y: None
                 height: self.minimum_height 
                 padding: 5,5         
-        
-                Label:
-                    font_size: 75
-                    size_hint_y: None
-                    height: 200
-                    padding: 10, 10
-                    text: "Bill: $"
                                                         
                 TextInput:
                     id: Bill
                     text: Bill.text
+                    hint_text: "Bill: $"
                     multiline: False
                     font_size: 125
                     size_hint_y: None
@@ -123,16 +149,10 @@ Builder.load_string("""
                 height: self.minimum_height 
                 padding: 5,5        
         
-                Label:
-                    font_size: 75
-                    size_hint_y: None
-                    height: 200
-                    padding: 10, 10
-                    text: "Percent: %"
-                                                    
                 TextInput:
                     id: Percent
                     text: Percent.text
+                    hint_text: "Percent: %"
                     multiline: False
                     font_size: 125
                     size_hint_y: None
@@ -147,16 +167,10 @@ Builder.load_string("""
                 height: self.minimum_height 
                 padding: 5,5        
         
-                Label:
-                    font_size: 75
-                    size_hint_y: None
-                    height: 200
-                    padding: 10, 10
-                    text: "Split:"
-                                                    
                 TextInput:
                     id: Split
                     text: Split.text
+                    hint_text: "Split:"
                     multiline: False
                     font_size: 125
                     size_hint_y: None
@@ -227,6 +241,17 @@ class Tip_Calculator(Screen):
             
             if split == "":
                 split = 0
+                print("Split:",split)
+            
+            if int(split) > 1:
+               bill_split = str(float(bill) / float(split))
+               print("Bill split", bill_split)
+               
+               tip_split = str(float(tip) / float(split))
+               print("tip_split",tip_split)
+               
+               total_split = str(float(total) / float(split))
+               print("total_split",total_split)
             
             self.ids.list_of_steps.add_widget(Label(text= "Bill = $" + "{:,.2f}".format(float(bill)) ,font_size = 60, size_hint_y= None, height=100))
             self.layouts.append(layout)
@@ -237,28 +262,27 @@ class Tip_Calculator(Screen):
             self.ids.list_of_steps.add_widget(Label(text= "Tip = $" + "{:,.2f}".format(float(tip)),font_size = 60, size_hint_y= None, height=100))
             self.layouts.append(layout)
             
-            self.ids.list_of_steps.add_widget(Label(text= "Total Bill = $" + "{:,.2f}".format(float(total)) ,font_size = 60, size_hint_y= None, height=100))
-            self.layouts.append(layout)
-            
             if float(split) == 1 or float(split) == 0: 
-                None
+                self.ids.list_of_steps.add_widget(Label(text= "Total Bill = ${:,.2f}".format(float(total)) ,font_size = 60, size_hint_y= None, height=100))
+                self.layouts.append(layout)
             elif float(split) > 1:
-                print()
-                print("Bill after split: $",float(total)/float(split),"each")
+                self.ids.list_of_steps.add_widget(Label(text= "${:,.2f}".format(float(bill)) + " bill split " + str(split) + " ways = ${:,.2f}".format(float(bill_split)) ,font_size = 60, size_hint_y= None, height=100))
+                self.layouts.append(layout)
                 
-                split_up = str(float(total)/float(split))
-                split_up = "{:,.2f}".format(float(split_up))
-                print("Split_up",split_up)
+                self.ids.list_of_steps.add_widget(Label(text= "${:,.2f}".format(float(tip)) + " tip split " + str(split) + " ways = ${:,.2f}".format(float(tip_split)) ,font_size = 60, size_hint_y= None, height=100))
+                self.layouts.append(layout)
                 
-                self.ids.list_of_steps.add_widget(Label(text= "Split " + split + " ways = $" + split_up + " each",font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Each person's total = ${:,.2f}".format(float(total_split)) ,font_size = 60, size_hint_y= None, height=100))
                 self.layouts.append(layout)
             else:
                 print("Invalid Entry")
                 self.ids.list_of_steps.add_widget(Label(text= "Invalid Input" ,font_size = 60, size_hint_y= None, height=100))
                 self.layouts.append(layout)
+                
+            
         except Exception:
             try:
-                self.ids.list_of_steps.add_widget(Label(text= "Out Of Range" ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Invalid Input" ,font_size = 60, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                     
             except Exception:               
@@ -268,8 +292,12 @@ class Tip_Calculator(Screen):
 class Homepage(Screen):
     pass            
 
+class Menu(Screen):
+    pass
+
 sm = ScreenManager()
 sm.add_widget(Homepage(name="Homepage"))
+sm.add_widget(Menu(name="Menu"))
 sm.add_widget(Tip_Calculator(name="Tip_Calculator"))     
 sm.current = "Homepage"
 
