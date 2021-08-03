@@ -345,4 +345,5 @@ class Tip_Calculator(App):
 
 if __name__ == '__main__':
     Tip_Calculator().run()
-   
+    
+
