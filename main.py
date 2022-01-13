@@ -1,3 +1,5 @@
+#Tip Calculator
+
 from kivy.app import App
 from kivy.lang import Builder
 from kivy.uix.label import Label
@@ -21,11 +23,20 @@ Builder.load_string("""
                 root.manager.transition.direction = "left" 
                 
         Button:
-            font_size: 75
+            font_size: 60
             background_color: 0, 0 , 0 , 1
             size_hint_y: None
-            height: 200
-            text: "KSquared Tip Calculaor"
+            height: 100
+            text: "Tip Calculator"
+            on_release:
+                app.root.current = "Menu"
+                root.manager.transition.direction = "left"         
+        Button:
+            font_size: 60
+            background_color: 0, 0 , 0 , 1
+            size_hint_y: None
+            height: 100
+            text: "KSquared-math,LLC ©"
             on_release:
                 app.root.current = "Menu"
                 root.manager.transition.direction = "left" 
@@ -346,4 +357,3 @@ class Tip_Calculator(App):
 if __name__ == '__main__':
     Tip_Calculator().run()
     
-
