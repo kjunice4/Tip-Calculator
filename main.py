@@ -23,7 +23,7 @@ Builder.load_string("""
                 root.manager.transition.direction = "left" 
                 
         Button:
-            font_size: 60
+            font_size: 50
             background_color: 0, 0 , 0 , 1
             size_hint_y: None
             height: 100
@@ -32,7 +32,7 @@ Builder.load_string("""
                 app.root.current = "Menu"
                 root.manager.transition.direction = "left"         
         Button:
-            font_size: 60
+            font_size: 50
             background_color: 0, 0 , 0 , 1
             size_hint_y: None
             height: 100
@@ -87,28 +87,6 @@ Builder.load_string("""
                 on_release:
                     import webbrowser
                     webbrowser.open('https://kevinjunice.wixsite.com/ksquaredllc')
-            Button:
-                font_size: 75
-                background_color: 0, 0 , 0 , 1
-                size_hint_y: None
-                height: 400
-                text: "Other apps from KSquared,LLC"
-                on_release:
-                    import webbrowser
-                    webbrowser.open('https://kevinjunice.wixsite.com/ksquaredllc/subscribe')   
-                
-                
-            Button:
-                font_size: 75
-                background_color: 0, 0 , 0 , 1
-                size_hint_y: None
-                height: 400
-                text: "Donate to KSquared,LLC"
-                on_release:
-                    import webbrowser
-                    webbrowser.open('https://kevinjunice.wixsite.com/ksquaredllc/about-ksquared')
-                
-                    
             
 """)
 
@@ -287,54 +265,54 @@ class Tip_Calculator(Screen):
                 total_split = str(float(total) / float(split))
                 print("total_split",total_split)
                 
-                self.ids.list_of_steps.add_widget(Label(text= "Bill = $" + "{:,.2f}".format(float(bill)) ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Bill = $" + "{:,.2f}".format(float(bill)) ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                  
-                self.ids.list_of_steps.add_widget(Label(text= "Percent for Tip = " + str(perc) + "%" ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Percent for Tip = " + str(perc) + "%" ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                  
-                self.ids.list_of_steps.add_widget(Label(text= "Tip = $" + "{:,.2f}".format(float(tip)),font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Tip = $" + "{:,.2f}".format(float(tip)),font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                 
-                self.ids.list_of_steps.add_widget(Label(text= "Total Bill = $" + "{:,.2f}".format(float(total)),font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Total Bill = $" + "{:,.2f}".format(float(total)),font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout) 
 
             
             if float(split) == 1 or float(split) == 0: 
-                self.ids.list_of_steps.add_widget(Label(text= "Bill = $" + "{:,.2f}".format(float(bill)) ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Bill = $" + "{:,.2f}".format(float(bill)) ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                  
-                self.ids.list_of_steps.add_widget(Label(text= "Percent for Tip = " + str(perc) + "%" ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Percent for Tip = " + str(perc) + "%" ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                 
-                self.ids.list_of_steps.add_widget(Label(text= "Tip = $" + "{:,.2f}".format(float(tip)),font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Tip = $" + "{:,.2f}".format(float(tip)),font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                 
-                self.ids.list_of_steps.add_widget(Label(text= "Total Bill = ${:,.2f}".format(float(total)) ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Total Bill = ${:,.2f}".format(float(total)) ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                 
             elif float(split) > 1:
-                self.ids.list_of_steps.add_widget(Label(text= "${:,.2f}".format(float(bill)) + " bill split " + str(split) + " ways = ${:,.2f}".format(float(bill_split)) ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "${:,.2f}".format(float(bill)) + " bill split " + str(split) + " ways = ${:,.2f}".format(float(bill_split)) ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                 
-                self.ids.list_of_steps.add_widget(Label(text= "${:,.2f}".format(float(tip)) + " tip split " + str(split) + " ways = ${:,.2f}".format(float(tip_split)) ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "${:,.2f}".format(float(tip)) + " tip split " + str(split) + " ways = ${:,.2f}".format(float(tip_split)) ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                 
-                self.ids.list_of_steps.add_widget(Label(text= "Each person's total = ${:,.2f}".format(float(total_split)) ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Each person's total = ${:,.2f}".format(float(total_split)) ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
             else:
                 print("Invalid Input")
-                self.ids.list_of_steps.add_widget(Label(text= "" ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "" ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                 
             
         except Exception:
             try:
-                self.ids.list_of_steps.add_widget(Label(text= "Invalid Input" ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Invalid Input" ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)
                     
             except Exception:               
-                self.ids.list_of_steps.add_widget(Label(text= "Invalid Input" ,font_size = 60, size_hint_y= None, height=100))
+                self.ids.list_of_steps.add_widget(Label(text= "Invalid Input" ,font_size = 50, size_hint_y= None, height=100))
                 self.layouts.append(layout)  
                 
 class Homepage(Screen):
