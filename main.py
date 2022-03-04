@@ -26,21 +26,21 @@ Builder.load_string("""
             font_size: 50
             background_color: 0, 0 , 0 , 1
             size_hint_y: None
-            height: 100
-            text: "Tip Calculator"
+            height: 200
+            text: "Tap anywhere to continue"
             on_release:
                 app.root.current = "Menu"
-                root.manager.transition.direction = "left"         
+                root.manager.transition.direction = "left" 
+                
         Button:
             font_size: 50
             background_color: 0, 0 , 0 , 1
             size_hint_y: None
-            height: 100
-            text: "KSquared-math,LLC ©"
+            height: 200
+            text: "KSquared-math,LLC © : Tip Calculator"
             on_release:
                 app.root.current = "Menu"
-                root.manager.transition.direction = "left" 
-
+                root.manager.transition.direction = "left"    	                 
 """)
 
 #Menu Page
